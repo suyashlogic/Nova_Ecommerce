@@ -1,0 +1,53 @@
+/* Global element defaults */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--nova-font-body);
+  background: var(--nova-bg);
+  color: var(--nova-ink);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--nova-font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--nova-ink);
+}
+
+h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); }
+h3 { font-size: 1.25rem; }
+
+a { text-decoration: none; transition: color var(--nova-ease); }
+
+/* Visible keyboard focus everywhere (accessibility) */
+:focus-visible {
+  outline: 2px solid var(--nova-accent);
+  outline-offset: 2px;
+}
+
+img { max-width: 100%; }
+
+.page-main { min-height: calc(100vh - var(--nova-header-height)); }
+.page-section { padding-block: clamp(2rem, 5vw, 4rem); }
+.page-title { margin-bottom: 0.25rem; font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+.page-subtitle { color: var(--nova-muted); margin-bottom: 2rem; }
+.eyebrow {
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--nova-accent);
+}
+.text-muted-nova { color: var(--nova-muted) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Skip link: lets keyboard users jump past the navbar */
+.skip-link {
+  position: absolute; left: 1rem; top: -4rem; z-index: 3000;
+  background: var(--nova-ink); color: #fff; padding: 0.6rem 1rem; border-radius: var(--nova-radius-sm);
+}
+.skip-link:focus { top: 1rem; color: #fff; }

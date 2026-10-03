@@ -1,0 +1,49 @@
+/* ==========================================================
+   NOVA design tokens: the single source of truth for the look.
+   Change a value here and the whole app follows.
+   ========================================================== */
+:root {
+  /* Colour */
+  --nova-bg: #fafaf8;
+  --nova-surface: #ffffff;
+  --nova-surface-alt: #f3f2ee;
+  --nova-ink: #111111;
+  --nova-ink-soft: #3d3d3a;
+  --nova-muted: #6b6b66;
+  --nova-border: #e6e4dd;
+  --nova-border-strong: #cfccc2;
+
+  --nova-accent: #4f46e5;
+  --nova-accent-hover: #4338ca;
+  --nova-accent-soft: #eeedfd;
+
+  --nova-success: #1a7f4b;
+  --nova-success-soft: #e5f4ec;
+  --nova-warning: #9a6200;
+  --nova-warning-soft: #fdf3dc;
+  --nova-danger: #b42318;
+  --nova-danger-soft: #fdeceb;
+
+  /* Typography */
+  --nova-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --nova-font-heading: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+
+  /* Radius, shadow, spacing, motion */
+  --nova-radius-sm: 8px;
+  --nova-radius-md: 12px;
+  --nova-radius-lg: 20px;
+  --nova-shadow-sm: 0 1px 2px rgba(17, 17, 17, 0.06);
+  --nova-shadow-md: 0 8px 24px rgba(17, 17, 17, 0.08);
+  --nova-shadow-lg: 0 18px 48px rgba(17, 17, 17, 0.12);
+  --nova-ease: 160ms ease;
+  --nova-header-height: 68px;
+
+  /* Point Bootstrap's own variables at our tokens */
+  --bs-body-font-family: var(--nova-font-body);
+  --bs-body-bg: var(--nova-bg);
+  --bs-body-color: var(--nova-ink);
+  --bs-border-color: var(--nova-border);
+  --bs-link-color: var(--nova-accent);
+  --bs-link-hover-color: var(--nova-accent-hover);
+  --bs-secondary-color: var(--nova-muted);
+}

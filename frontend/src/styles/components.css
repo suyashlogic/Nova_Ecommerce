@@ -1,0 +1,187 @@
+/* ==========================================================
+   Reusable component styles. Bootstrap handles layout/grid;
+   everything here is NOVA's visual identity.
+   ========================================================== */
+
+/* ---------- Buttons (layered on Bootstrap's .btn) ---------- */
+.btn { font-weight: 500; border-radius: var(--nova-radius-md); transition: all var(--nova-ease); }
+.btn-nova-primary {
+  --bs-btn-color: #fff; --bs-btn-bg: var(--nova-accent); --bs-btn-border-color: var(--nova-accent);
+  --bs-btn-hover-color: #fff; --bs-btn-hover-bg: var(--nova-accent-hover); --bs-btn-hover-border-color: var(--nova-accent-hover);
+  --bs-btn-active-color: #fff; --bs-btn-active-bg: var(--nova-accent-hover); --bs-btn-active-border-color: var(--nova-accent-hover);
+  --bs-btn-disabled-color: #fff; --bs-btn-disabled-bg: var(--nova-accent); --bs-btn-disabled-border-color: var(--nova-accent);
+  --bs-btn-focus-shadow-rgb: 79, 70, 229;
+}
+.btn-nova-dark {
+  --bs-btn-color: #fff; --bs-btn-bg: var(--nova-ink); --bs-btn-border-color: var(--nova-ink);
+  --bs-btn-hover-color: #fff; --bs-btn-hover-bg: #2b2b29; --bs-btn-hover-border-color: #2b2b29;
+  --bs-btn-active-color: #fff; --bs-btn-active-bg: #2b2b29; --bs-btn-active-border-color: #2b2b29;
+  --bs-btn-disabled-color: #fff; --bs-btn-disabled-bg: var(--nova-ink); --bs-btn-disabled-border-color: var(--nova-ink);
+  --bs-btn-focus-shadow-rgb: 17, 17, 17;
+}
+.btn-nova-outline {
+  --bs-btn-color: var(--nova-ink); --bs-btn-bg: transparent; --bs-btn-border-color: var(--nova-border-strong);
+  --bs-btn-hover-color: var(--nova-ink); --bs-btn-hover-bg: var(--nova-surface-alt); --bs-btn-hover-border-color: var(--nova-ink);
+  --bs-btn-active-color: var(--nova-ink); --bs-btn-active-bg: var(--nova-surface-alt); --bs-btn-active-border-color: var(--nova-ink);
+  --bs-btn-disabled-color: var(--nova-muted); --bs-btn-disabled-border-color: var(--nova-border);
+  --bs-btn-focus-shadow-rgb: 17, 17, 17;
+}
+.btn-nova-ghost {
+  --bs-btn-color: var(--nova-ink-soft); --bs-btn-bg: transparent; --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: var(--nova-ink); --bs-btn-hover-bg: var(--nova-surface-alt); --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: var(--nova-ink); --bs-btn-active-bg: var(--nova-surface-alt); --bs-btn-active-border-color: transparent;
+}
+
+.nova-icon-btn {
+  display: inline-grid; place-items: center; width: 42px; height: 42px;
+  border: 0; background: transparent; color: var(--nova-ink);
+  border-radius: var(--nova-radius-md); transition: background var(--nova-ease);
+  position: relative;
+}
+.nova-icon-btn:hover { background: var(--nova-surface-alt); }
+
+/* ---------- Forms ---------- */
+.form-label { font-size: 0.875rem; font-weight: 500; color: var(--nova-ink-soft); margin-bottom: 0.35rem; }
+.form-control, .form-select {
+  border-radius: var(--nova-radius-md); border-color: var(--nova-border-strong);
+  padding: 0.65rem 0.9rem; background-color: var(--nova-surface); color: var(--nova-ink);
+}
+.form-control::placeholder { color: #9b9a93; }
+.form-control:focus, .form-select:focus {
+  border-color: var(--nova-accent); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.14);
+}
+.form-control.is-invalid { border-color: var(--nova-danger); background-image: none; }
+.form-control.is-invalid:focus { box-shadow: 0 0 0 4px rgba(180, 35, 24, 0.14); }
+.field-error { color: var(--nova-danger); font-size: 0.82rem; margin-top: 0.3rem; }
+.field-hint { color: var(--nova-muted); font-size: 0.82rem; margin-top: 0.3rem; }
+
+/* ---------- Cards ---------- */
+.nova-card {
+  background: var(--nova-surface); border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg); box-shadow: var(--nova-shadow-sm);
+}
+.nova-card-pad { padding: clamp(1.25rem, 3vw, 2rem); }
+
+/* ---------- Badges ---------- */
+.badge-nova {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0.28rem 0.65rem; border-radius: 999px;
+  font-size: 0.75rem; font-weight: 600; background: var(--nova-surface-alt); color: var(--nova-ink-soft);
+}
+.badge-nova.success { background: var(--nova-success-soft); color: var(--nova-success); }
+.badge-nova.warning { background: var(--nova-warning-soft); color: var(--nova-warning); }
+.badge-nova.danger { background: var(--nova-danger-soft); color: var(--nova-danger); }
+.badge-nova.accent { background: var(--nova-accent-soft); color: var(--nova-accent); }
+
+/* ---------- Alerts ---------- */
+.alert { border-radius: var(--nova-radius-md); border: 1px solid transparent; font-size: 0.92rem; }
+.alert-danger { background: var(--nova-danger-soft); color: var(--nova-danger); border-color: #f5c6c2; }
+.alert-success { background: var(--nova-success-soft); color: var(--nova-success); border-color: #b9e0cb; }
+
+/* ---------- Header / navbar ---------- */
+.nova-header {
+  position: sticky; top: 0; z-index: 1030;
+  background: rgba(250, 250, 248, 0.92); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--nova-border);
+}
+.nova-nav { display: flex; align-items: center; gap: 1.25rem; min-height: var(--nova-header-height); }
+.nova-logo {
+  font-family: var(--nova-font-heading); font-weight: 700; font-size: 1.5rem;
+  letter-spacing: 0.04em; color: var(--nova-ink); display: inline-flex; align-items: baseline;
+}
+.nova-logo:hover { color: var(--nova-ink); }
+.nova-logo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--nova-accent); margin-left: 3px; }
+.nova-nav-links { gap: 0.25rem; margin-left: 0.75rem; }
+.nova-link {
+  padding: 0.45rem 0.8rem; border-radius: var(--nova-radius-sm);
+  color: var(--nova-muted); font-weight: 500; font-size: 0.95rem;
+}
+.nova-link:hover { color: var(--nova-ink); background: var(--nova-surface-alt); }
+.nova-link.active { color: var(--nova-ink); }
+.nova-nav-search { flex: 1 1 auto; max-width: 340px; margin-left: auto; }
+.nova-nav-actions { display: flex; align-items: center; gap: 0.35rem; margin-left: auto; }
+@media (min-width: 992px) { .nova-nav-actions { margin-left: 0; } }
+
+.nova-mobile-panel { border-top: 1px solid var(--nova-border); background: var(--nova-bg); padding: 1rem 0 1.25rem; }
+.nova-mobile-links { display: flex; flex-direction: column; gap: 0.15rem; margin-top: 1rem; }
+.nova-mobile-links .nova-link { padding: 0.8rem 0.9rem; font-size: 1rem; }
+
+/* Search input with icon */
+.nova-search { position: relative; }
+.nova-search .nova-search-icon { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--nova-muted); pointer-events: none; }
+.nova-search input { padding-left: 2.6rem; border-radius: 999px; }
+.nova-search.large input { padding-block: 0.95rem; padding-right: 8.5rem; font-size: 1.05rem; }
+.nova-search.large .btn { position: absolute; right: 0.4rem; top: 50%; transform: translateY(-50%); border-radius: 999px; }
+
+/* User dropdown */
+.nova-menu { position: relative; }
+.nova-menu-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.3rem 0.5rem 0.3rem 0.3rem; border: 1px solid var(--nova-border); border-radius: 999px; background: var(--nova-surface); }
+.nova-menu-btn:hover { border-color: var(--nova-border-strong); }
+.nova-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--nova-ink); color: #fff; display: grid; place-items: center; font-size: 0.85rem; font-weight: 600; }
+.nova-menu-panel {
+  position: absolute; right: 0; top: calc(100% + 8px); min-width: 220px; padding: 0.4rem;
+  background: var(--nova-surface); border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md); box-shadow: var(--nova-shadow-md); z-index: 1040;
+}
+.nova-menu-head { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--nova-border); margin-bottom: 0.3rem; }
+.nova-menu-item {
+  display: flex; align-items: center; gap: 0.6rem; width: 100%; padding: 0.6rem 0.75rem;
+  border: 0; background: transparent; border-radius: var(--nova-radius-sm);
+  color: var(--nova-ink-soft); font-size: 0.92rem; text-align: left;
+}
+.nova-menu-item:hover { background: var(--nova-surface-alt); color: var(--nova-ink); }
+
+/* ---------- Footer ---------- */
+.nova-footer { background: var(--nova-ink); color: #c9c8c1; padding: 3.5rem 0 2rem; margin-top: 4rem; }
+.nova-footer .nova-logo { color: #fff; }
+.nova-footer h4 { color: #fff; font-size: 0.95rem; font-family: var(--nova-font-body); letter-spacing: 0; margin-bottom: 1rem; }
+.nova-footer a { color: #c9c8c1; display: block; padding: 0.2rem 0; font-size: 0.92rem; }
+.nova-footer a:hover { color: #fff; }
+.nova-footer-bottom { border-top: 1px solid #2c2c2a; margin-top: 2.5rem; padding-top: 1.5rem; font-size: 0.85rem; color: #8f8e87; }
+
+/* ---------- Loading, skeleton, empty and error states ---------- */
+.nova-spinner {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 3px solid var(--nova-border); border-top-color: var(--nova-accent);
+  animation: nova-spin 0.7s linear infinite;
+}
+.nova-spinner.sm { width: 18px; height: 18px; border-width: 2px; }
+@keyframes nova-spin { to { transform: rotate(360deg); } }
+.nova-center { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; padding: 4rem 1rem; text-align: center; }
+
+.skeleton {
+  background: linear-gradient(90deg, #eceae4 25%, #f5f4f0 37%, #eceae4 63%);
+  background-size: 400% 100%; animation: nova-shimmer 1.4s ease infinite;
+  border-radius: var(--nova-radius-sm);
+}
+@keyframes nova-shimmer { 0% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
+
+.state-box { text-align: center; padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem; max-width: 520px; margin-inline: auto; }
+.state-icon { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 1.25rem; background: var(--nova-surface-alt); color: var(--nova-muted); }
+.state-icon.danger { background: var(--nova-danger-soft); color: var(--nova-danger); }
+.state-box h3 { margin-bottom: 0.4rem; }
+.state-box p { color: var(--nova-muted); margin-bottom: 1.25rem; }
+
+/* ---------- Toasts ---------- */
+.nova-toasts { position: fixed; z-index: 2000; right: 1rem; bottom: 1rem; left: 1rem; display: flex; flex-direction: column; align-items: flex-end; gap: 0.6rem; pointer-events: none; }
+.nova-toast {
+  pointer-events: auto; display: flex; align-items: flex-start; gap: 0.7rem; width: min(100%, 380px);
+  padding: 0.85rem 1rem; background: var(--nova-ink); color: #fff;
+  border-radius: var(--nova-radius-md); box-shadow: var(--nova-shadow-lg);
+  animation: nova-toast-in 200ms ease;
+}
+.nova-toast .toast-icon { flex: none; margin-top: 2px; }
+.nova-toast.success .toast-icon { color: #6ee7a8; }
+.nova-toast.error .toast-icon { color: #ff8e84; }
+.nova-toast-close { margin-left: auto; border: 0; background: transparent; color: #a7a69f; padding: 0; line-height: 1; }
+.nova-toast-close:hover { color: #fff; }
+@keyframes nova-toast-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Auth pages ---------- */
+.auth-wrap { max-width: 440px; margin: clamp(2rem, 6vw, 4.5rem) auto; }
+.auth-wrap h1 { font-size: 2rem; margin-bottom: 0.4rem; }
+
+/* ---------- Temporary Home preview product tile (replaced in Phase 7) ---------- */
+.preview-tile img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--nova-radius-md); background: var(--nova-surface-alt); }
+.price-now { font-weight: 600; }
+.price-was { color: var(--nova-muted); text-decoration: line-through; font-size: 0.9rem; margin-left: 0.4rem; }
