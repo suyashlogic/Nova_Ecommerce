@@ -26,6 +26,7 @@ export default function ToastProvider({ children }) {
     () => ({
       success: (message) => show('success', message),
       error: (message) => show('error', message),
+      info: (message) => show('info', message),
     }),
     [show]
   );

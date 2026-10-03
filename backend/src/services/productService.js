@@ -225,3 +225,15 @@ export async function deleteProduct(id) {
   if (!rows[0]) throw AppError.notFound('Product not found');
   return rows[0].image_url;
 }
+
+// Products a user has saved, newest first. Same shape as the normal product list.
+export async function listWishlistProducts(userId) {
+  const { rows } = await pool.query(
+    `${SELECT_PRODUCT}
+       JOIN wishlist_items w ON w.product_id = p.id
+      WHERE w.user_id = $1
+      ORDER BY w.created_at DESC, w.id DESC`,
+    [userId]
+  );
+  return rows.map(toProduct);
+}
