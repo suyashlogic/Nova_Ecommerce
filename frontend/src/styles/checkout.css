@@ -1,0 +1,67 @@
+/* ==========================================================
+   Phase 9: checkout, orders, status timeline
+   ========================================================== */
+
+/* ---------- Checkout stepper ---------- */
+.steps { list-style: none; display: flex; gap: 0.5rem; padding: 0; margin: 1.25rem 0 0.5rem; overflow-x: auto; }
+.steps li { display: flex; align-items: center; gap: 0.55rem; flex: 1 1 0; min-width: max-content; color: var(--nova-muted); font-size: 0.9rem; position: relative; }
+.steps li:not(:last-child)::after { content: ''; flex: 1; height: 2px; background: var(--nova-border); margin-left: 0.25rem; min-width: 18px; }
+.steps-dot { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; flex: none; font-size: 0.8rem; font-weight: 600; background: var(--nova-surface); border: 2px solid var(--nova-border-strong); }
+.steps li.current { color: var(--nova-ink); font-weight: 600; }
+.steps li.current .steps-dot { background: var(--nova-ink); border-color: var(--nova-ink); color: #fff; }
+.steps li.done { color: var(--nova-ink-soft); }
+.steps li.done .steps-dot { background: var(--nova-accent); border-color: var(--nova-accent); color: #fff; }
+.steps li.done::after { background: var(--nova-accent); }
+@media (max-width: 575.98px) { .steps li:not(.current) .steps-label { display: none; } }
+
+/* ---------- Item rows (checkout summary, order details) ---------- */
+.detail-items { list-style: none; margin: 0; padding: 0; }
+.detail-items li { display: flex; align-items: center; gap: 0.9rem; padding: 0.85rem 0; border-bottom: 1px solid var(--nova-border); }
+.detail-items li:last-child { border-bottom: 0; }
+.detail-items img { width: 56px; height: 56px; object-fit: cover; border-radius: var(--nova-radius-sm); background: var(--nova-surface-alt); flex: none; }
+
+.address-block { font-style: normal; line-height: 1.6; }
+.summary-address { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.25rem; padding: 1rem 1.1rem; background: var(--nova-surface-alt); border-radius: var(--nova-radius-md); }
+
+/* ---------- Payment options ---------- */
+.pay-options { display: grid; gap: 0.7rem; }
+.pay-option { display: flex; align-items: flex-start; gap: 0.8rem; padding: 1rem 1.1rem; border: 1px solid var(--nova-border-strong); border-radius: var(--nova-radius-md); cursor: pointer; background: var(--nova-surface); transition: border-color var(--nova-ease), background var(--nova-ease); }
+.pay-option:hover { border-color: var(--nova-ink); }
+.pay-option.selected { border-color: var(--nova-accent); background: var(--nova-accent-soft); }
+.pay-option input { margin-top: 0.3rem; accent-color: var(--nova-accent); }
+.pay-option small { display: block; color: var(--nova-muted); }
+
+/* ---------- Order list and cards ---------- */
+.order-list { display: grid; gap: 1rem; }
+.order-card { background: var(--nova-surface); border: 1px solid var(--nova-border); border-radius: var(--nova-radius-lg); padding: 1.25rem; transition: box-shadow var(--nova-ease); }
+.order-card:hover { box-shadow: var(--nova-shadow-md); }
+.order-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--nova-border); }
+.order-ref { font-family: var(--nova-font-heading); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.02em; }
+.order-card-items { list-style: none; margin: 0; padding: 0.9rem 0; display: grid; gap: 0.6rem; }
+.order-card-items li { display: flex; align-items: center; gap: 0.7rem; }
+.order-card-items img { width: 40px; height: 40px; object-fit: cover; border-radius: 8px; background: var(--nova-surface-alt); flex: none; }
+.order-card-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.order-card-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--nova-border); }
+
+/* ---------- Status timeline ---------- */
+.timeline { list-style: none; padding: 0; margin: 0; display: flex; }
+.timeline li { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; position: relative; text-align: center; font-size: 0.82rem; color: var(--nova-muted); }
+.timeline li:not(:last-child)::after { content: ''; position: absolute; top: 13px; left: calc(50% + 16px); right: calc(-50% + 16px); height: 2px; background: var(--nova-border); }
+.timeline li.done:not(:last-child)::after { background: var(--nova-accent); }
+.timeline-dot { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--nova-surface); border: 2px solid var(--nova-border-strong); position: relative; z-index: 1; }
+.timeline li.done .timeline-dot { background: var(--nova-accent); border-color: var(--nova-accent); color: #fff; }
+.timeline li.current .timeline-dot { border-color: var(--nova-accent); box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.15); background: var(--nova-surface); }
+.timeline li.current, .timeline li.done { color: var(--nova-ink); }
+.timeline li.current .timeline-label { font-weight: 600; }
+
+/* ---------- Order confirmation (step 5) ---------- */
+.confirm-banner { text-align: center; padding: clamp(1.75rem, 5vw, 3rem) 1.5rem; margin-bottom: 2.5rem; background: var(--nova-surface); border: 1px solid var(--nova-border); border-radius: var(--nova-radius-lg); box-shadow: var(--nova-shadow-sm); }
+.confirm-banner h1 { font-size: clamp(1.6rem, 4vw, 2.25rem); margin-bottom: 0.75rem; }
+.confirm-banner p { margin-bottom: 0.4rem; color: var(--nova-ink-soft); }
+.confirm-icon { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 1.25rem; display: grid; place-items: center; background: var(--nova-success-soft); color: var(--nova-success); }
+.confirm-ref { display: inline-block; font-family: var(--nova-font-heading); font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700; letter-spacing: 0.06em; padding: 0.5rem 1.25rem; margin: 0.25rem 0 1rem; background: var(--nova-accent-soft); color: var(--nova-accent); border-radius: var(--nova-radius-md); }
+
+@media (max-width: 575.98px) {
+  .timeline li { font-size: 0.7rem; }
+  .timeline li:not(:last-child)::after { left: calc(50% + 14px); right: calc(-50% + 14px); }
+}

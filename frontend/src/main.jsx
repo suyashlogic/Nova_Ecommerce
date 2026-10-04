@@ -9,6 +9,7 @@ import './styles/base.css';
 import './styles/components.css';
 import './styles/pages.css';
 import './styles/cart.css';
+import './styles/checkout.css';
 
 import App from './App.jsx';
 import ToastProvider from './context/ToastProvider.jsx';

@@ -7,10 +7,12 @@ import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import Categories from './pages/Categories';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import Orders from './pages/Orders';
+import OrderDetail from './pages/OrderDetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
-import ComingSoon from './pages/ComingSoon';
 import NotFound from './pages/NotFound';
 
 // The route table: which URL shows which page.
@@ -33,9 +35,9 @@ export default function App() {
 
         {/* Only for logged-in users */}
         <Route element={<ProtectedRoute />}>
-          <Route path="checkout" element={<ComingSoon title="Checkout" phase={9} />} />
-          <Route path="orders" element={<ComingSoon title="Orders" phase={9} />} />
-          <Route path="orders/:id" element={<ComingSoon title="Order details" phase={9} />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="orders/:id" element={<OrderDetail />} />
           <Route path="profile" element={<Profile />} />
         </Route>
 
