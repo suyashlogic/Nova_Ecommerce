@@ -4,6 +4,7 @@ import authRoutes from './auth.js';
 import productRoutes from './products.js';
 import categoryRoutes from './categories.js';
 import wishlistRoutes from './wishlist.js';
+import cartRoutes from './cart.js';
 
 const router = Router();
 
@@ -12,8 +13,8 @@ router.use('/auth', authRoutes);
 router.use('/products', productRoutes);
 router.use('/categories', categoryRoutes);
 router.use('/wishlist', wishlistRoutes);
+router.use('/cart', cartRoutes);
 
-// Phase 8:  router.use('/cart', cartRoutes);
 // Phase 9:  router.use('/orders', orderRoutes);
 // Phase 10: router.use('/admin', adminRoutes);
 

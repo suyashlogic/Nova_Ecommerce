@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import Categories from './pages/Categories';
+import Cart from './pages/Cart';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
@@ -22,7 +23,7 @@ export default function App() {
         <Route path="shop" element={<Shop />} />
         <Route path="products/:id" element={<ProductDetail />} />
         <Route path="categories" element={<Categories />} />
-        <Route path="cart" element={<ComingSoon title="Cart" phase={8} />} />
+        <Route path="cart" element={<Cart />} />
 
         {/* Only for logged-out visitors */}
         <Route element={<GuestRoute />}>

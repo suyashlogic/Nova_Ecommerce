@@ -1,15 +1,9 @@
-import useToast from './useToast';
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 
-// TEMPORARY placeholder. Phase 8 replaces this file with the real cart
-// (CartContext with localStorage + server sync). Components call the same
-// addItem(product, quantity) function, so none of them change.
+// const { items, summary, itemCount, addItem, updateQuantity, removeItem } = useCart();
 export default function useCart() {
-  const toast = useToast();
-
-  async function addItem() {
-    toast.info('The cart arrives in Phase 8. This button is already wired up.');
-    return false; // false = nothing was added
-  }
-
-  return { addItem };
+  const context = useContext(CartContext);
+  if (!context) throw new Error('useCart must be used inside <CartProvider>');
+  return context;
 }

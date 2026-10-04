@@ -5,12 +5,14 @@ import Icon from './Icon';
 import SearchBar from './SearchBar';
 import UserMenu from './UserMenu';
 import useAuth from '../hooks/useAuth';
+import useCart from '../hooks/useCart';
 
 // NavLink adds the "active" class automatically for the current page
 const linkClass = ({ isActive }) => `nova-link ${isActive ? 'active' : ''}`;
 
 export default function Navbar() {
   const { user, authLoading } = useAuth();
+  const { itemCount } = useCart();
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeMobile = () => setMobileOpen(false);
 
@@ -33,8 +35,13 @@ export default function Navbar() {
         <div className="nova-nav-search d-none d-lg-block"><SearchBar /></div>
 
         <div className="nova-nav-actions">
-          <Link to="/cart" className="nova-icon-btn" aria-label="Shopping cart">
+          <Link
+            to="/cart"
+            className="nova-icon-btn"
+            aria-label={itemCount > 0 ? `Shopping cart, ${itemCount} items` : 'Shopping cart'}
+          >
             <Icon name="cart" size={22} />
+            {itemCount > 0 && <span className="nova-badge-count" aria-hidden="true">{itemCount > 99 ? '99+' : itemCount}</span>}
           </Link>
 
           {/* Avoid flashing "Sign in" while we are still asking the server who the user is */}
