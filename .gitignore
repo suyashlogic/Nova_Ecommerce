@@ -1,23 +1,52 @@
 # Dependencies
 node_modules/
 
-# Environment
+# Environment files (real secrets). The .env.example templates stay tracked.
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 
 # Build output
 dist/
+dist-ssr/
 build/
+coverage/
+.nyc_output/
 
 # Uploads (keep folder, ignore user files)
 backend/uploads/*
 !backend/uploads/.gitkeep
 
-# Logs & OS/editor files
+# Local testing leftovers
+# curl cookie jars hold a real login session (for example an admin token)
+jar.txt
+cookies.txt
+*.cookies
+# database dumps (schema.sql and seed.sql are NOT dumps: keep them tracked)
+*.dump
+*.backup
+# keys and certificates
+*.pem
+*.key
+*.crt
+
+# Logs
+logs/
 *.log
 npm-debug.log*
+
+# Caches
+.eslintcache
+.cache/
+
+# OS and editor files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
 .vscode/
 .idea/
+*.swp
+*.swo
+*~

@@ -1,17 +1,21 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import FormField from '../components/FormField';
+import useFocusFirstInvalid from '../hooks/useFocusFirstInvalid';
+import usePageTitle from '../hooks/usePageTitle';
 import LoadingSpinner from '../components/LoadingSpinner';
 import useAuth from '../hooks/useAuth';
 import useToast from '../hooks/useToast';
 import { hasErrors, validateEmail, validateName, validatePassword } from '../utils/validators';
 
 export default function Register() {
+  usePageTitle('Create account');
   const { register } = useAuth();
   const toast = useToast();
 
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
   const [errors, setErrors] = useState({});
+  useFocusFirstInvalid(errors);
   const [formError, setFormError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 

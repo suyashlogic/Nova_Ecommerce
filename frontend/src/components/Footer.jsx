@@ -23,6 +23,7 @@ export default function Footer() {
             <Link to="/login">Sign in</Link>
             <Link to="/register">Create account</Link>
             <Link to="/orders">My orders</Link>
+            <Link to="/wishlist">Wishlist</Link>
           </div>
           <div className="col-lg-2">
             <h4>About</h4>

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import FormField from '../components/FormField';
+import useFocusFirstInvalid from '../hooks/useFocusFirstInvalid';
+import usePageTitle from '../hooks/usePageTitle';
 import LoadingSpinner from '../components/LoadingSpinner';
 import useAuth from '../hooks/useAuth';
 import useToast from '../hooks/useToast';
@@ -9,6 +11,7 @@ import { hasErrors, validateName } from '../utils/validators';
 const orEmpty = (value) => value ?? '';
 
 export default function Profile() {
+  usePageTitle('Your profile');
   const { user, updateProfile } = useAuth();
   const toast = useToast();
 
@@ -23,6 +26,7 @@ export default function Profile() {
     country: orEmpty(user.country),
   });
   const [errors, setErrors] = useState({});
+  useFocusFirstInvalid(errors);
   const [formError, setFormError] = useState('');
   const [saving, setSaving] = useState(false);
 

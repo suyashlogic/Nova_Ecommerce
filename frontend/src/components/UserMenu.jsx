@@ -4,21 +4,27 @@ import Icon from './Icon';
 import useAuth from '../hooks/useAuth';
 import useToast from '../hooks/useToast';
 
-// Avatar button with a dropdown: Profile, Orders, Admin (admins only), Sign out.
+// Avatar button with a dropdown: Profile, Orders, Wishlist, Admin (admins only), Sign out.
 export default function UserMenu() {
   const { user, isAdmin, logout } = useAuth();
   const toast = useToast();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
+  const buttonRef = useRef(null);
 
-  // Close when clicking outside the menu or pressing Escape
+  // Close when clicking outside; Escape closes and returns focus to the button
   useEffect(() => {
     if (!open) return undefined;
     const handleClick = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) setOpen(false);
     };
-    const handleKey = (event) => event.key === 'Escape' && setOpen(false);
+    const handleKey = (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+    };
     document.addEventListener('mousedown', handleClick);
     document.addEventListener('keydown', handleKey);
     return () => {
@@ -34,14 +40,17 @@ export default function UserMenu() {
     navigate('/');
   }
 
+  const close = () => setOpen(false);
+
   return (
     <div className="nova-menu" ref={menuRef}>
       <button
+        ref={buttonRef}
         type="button"
         className="nova-menu-btn"
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
-        aria-haspopup="menu"
+        aria-controls="account-menu"
         aria-label="Account menu"
       >
         <span className="nova-avatar">{user.name.charAt(0).toUpperCase()}</span>
@@ -49,23 +58,18 @@ export default function UserMenu() {
       </button>
 
       {open && (
-        <div className="nova-menu-panel" role="menu">
+        <div className="nova-menu-panel" id="account-menu">
           <div className="nova-menu-head">
             <div className="fw-semibold text-truncate">{user.name}</div>
             <div className="text-muted-nova small text-truncate">{user.email}</div>
           </div>
-          <Link to="/profile" className="nova-menu-item" role="menuitem" onClick={() => setOpen(false)}>
-            <Icon name="user" size={18} /> Profile
-          </Link>
-          <Link to="/orders" className="nova-menu-item" role="menuitem" onClick={() => setOpen(false)}>
-            <Icon name="package" size={18} /> My orders
-          </Link>
+          <Link to="/profile" className="nova-menu-item" onClick={close}><Icon name="user" size={18} /> Profile</Link>
+          <Link to="/orders" className="nova-menu-item" onClick={close}><Icon name="package" size={18} /> My orders</Link>
+          <Link to="/wishlist" className="nova-menu-item" onClick={close}><Icon name="heart" size={18} /> Wishlist</Link>
           {isAdmin && (
-            <Link to="/admin" className="nova-menu-item" role="menuitem" onClick={() => setOpen(false)}>
-              <Icon name="dashboard" size={18} /> Admin dashboard
-            </Link>
+            <Link to="/admin" className="nova-menu-item" onClick={close}><Icon name="dashboard" size={18} /> Admin dashboard</Link>
           )}
-          <button type="button" className="nova-menu-item" role="menuitem" onClick={handleLogout}>
+          <button type="button" className="nova-menu-item" onClick={handleLogout}>
             <Icon name="logout" size={18} /> Sign out
           </button>
         </div>

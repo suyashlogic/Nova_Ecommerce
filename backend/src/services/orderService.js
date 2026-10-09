@@ -25,6 +25,7 @@ function toOrder(row, items = []) {
   return {
     id: row.id,
     orderRef: row.order_ref,
+    userId: row.user_id,
     status: row.status,
     paymentMethod: row.payment_method,
     subtotal: Number(row.subtotal),

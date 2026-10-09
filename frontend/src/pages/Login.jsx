@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import FormField from '../components/FormField';
+import useFocusFirstInvalid from '../hooks/useFocusFirstInvalid';
+import usePageTitle from '../hooks/usePageTitle';
 import LoadingSpinner from '../components/LoadingSpinner';
 import useAuth from '../hooks/useAuth';
 import useToast from '../hooks/useToast';
 import { hasErrors, validateEmail } from '../utils/validators';
 
 export default function Login() {
+  usePageTitle('Sign in');
   const { login } = useAuth();
   const toast = useToast();
 
   // Controlled form: React state is the single source of truth for each input
   const [form, setForm] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
+  useFocusFirstInvalid(errors);
   const [formError, setFormError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 

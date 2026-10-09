@@ -48,8 +48,8 @@ export default function Home() {
   return (
     <>
       {/* ---------- Hero ---------- */}
-      <section className="hero">
-        <div className="container">
+      <section className="hero container">
+        <div className="hero-panel">
           <div className="row align-items-center g-5">
             <div className="col-lg-6">
               <p className="eyebrow">Product discovery</p>

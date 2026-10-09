@@ -1,6 +1,8 @@
 import EmptyState from '../components/EmptyState';
+import usePageTitle from '../hooks/usePageTitle';
 
 export default function NotFound() {
+  usePageTitle('Page not found');
   return (
     <div className="container page-section">
       <EmptyState

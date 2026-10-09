@@ -22,6 +22,12 @@ const PATHS = {
   filter: <path d="M4 6h16M7 12h10M10 18h4" />,
   plus: <path d="M12 5v14M5 12h14" />,
   minus: <path d="M5 12h14" />,
+  trendUp: <path d="m3 17 6-6 4 4 8-8M15 7h6v6" />,
+  edit: <path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4" />,
+  trash: <path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3" />,
+  store: <path d="M4 9l1-5h14l1 5M4 9v11h16V9M4 9h16M9 20v-6h6v6" />,
+  upload: <path d="M12 16V4M7 9l5-5 5 5M4 20h16" />,
+  users: <><circle cx="9" cy="8" r="3.5" /><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6" /></>,
 };
 
 export default function Icon({ name, size = 20, className = '' }) {

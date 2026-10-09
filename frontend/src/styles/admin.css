@@ -1,0 +1,81 @@
+/* ==========================================================
+   Phase 10: admin dashboard
+   ========================================================== */
+.admin-shell { display: grid; grid-template-columns: 250px minmax(0, 1fr); min-height: 100vh; background: var(--nova-bg); }
+
+/* ---------- Sidebar ---------- */
+.admin-sidebar {
+  position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 1.5rem;
+  padding: 1.5rem 1rem; background: var(--nova-surface); border-right: 1px solid var(--nova-border);
+}
+.admin-brand { display: flex; align-items: center; gap: 0.6rem; padding: 0 0.5rem; }
+.admin-nav { display: flex; flex-direction: column; gap: 0.2rem; }
+.admin-link {
+  display: flex; align-items: center; gap: 0.7rem; padding: 0.65rem 0.8rem; border-radius: var(--nova-radius-md);
+  color: var(--nova-ink-soft); font-weight: 500; font-size: 0.95rem; transition: background var(--nova-ease);
+}
+.admin-link:hover { background: var(--nova-surface-alt); color: var(--nova-ink); }
+.admin-link.active { background: var(--nova-ink); color: #fff; }
+.admin-sidebar-foot { margin-top: auto; display: flex; flex-direction: column; gap: 0.8rem; }
+.admin-user { padding: 0.8rem; border-radius: var(--nova-radius-md); background: var(--nova-surface-alt); }
+.admin-signout { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.3rem; padding: 0; border: 0; background: transparent; color: var(--nova-muted); font-size: 0.85rem; }
+.admin-signout:hover { color: var(--nova-danger); }
+
+/* Mobile: the sidebar becomes a scrollable top bar */
+@media (max-width: 991.98px) {
+  .admin-shell { grid-template-columns: 1fr; }
+  .admin-sidebar { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.75rem; padding: 0.9rem 1rem; border-right: 0; border-bottom: 1px solid var(--nova-border); }
+  .admin-nav { flex-direction: row; order: 3; width: 100%; overflow-x: auto; padding-bottom: 0.2rem; }
+  .admin-nav .admin-link { white-space: nowrap; }
+  .admin-sidebar-foot { margin: 0 0 0 auto; flex-direction: row; align-items: center; }
+  .admin-sidebar-foot .admin-link { padding: 0.5rem; font-size: 0; gap: 0; }
+  .admin-user { padding: 0.4rem 0.7rem; }
+  .admin-user .fw-medium { display: none; }
+  .admin-signout { margin: 0; }
+}
+
+/* ---------- Main area ---------- */
+.admin-main { padding: clamp(1.25rem, 3vw, 2.5rem); min-width: 0; }
+.admin-title { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 0.25rem; }
+.admin-title-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 1.5rem; }
+.admin-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.admin-toolbar .form-control { max-width: 340px; }
+
+.admin-card { background: var(--nova-surface); border: 1px solid var(--nova-border); border-radius: var(--nova-radius-lg); box-shadow: var(--nova-shadow-sm); overflow: hidden; }
+.admin-card-head { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.25rem; border-bottom: 1px solid var(--nova-border); }
+.admin-form { padding: clamp(1.25rem, 3vw, 2rem); overflow: visible; }
+
+/* ---------- Stat cards ---------- */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.stat-card { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--nova-surface); border: 1px solid var(--nova-border); border-radius: var(--nova-radius-lg); box-shadow: var(--nova-shadow-sm); }
+.stat-icon { width: 48px; height: 48px; flex: none; display: grid; place-items: center; border-radius: var(--nova-radius-md); background: var(--nova-accent-soft); color: var(--nova-accent); }
+.stat-icon.success { background: var(--nova-success-soft); color: var(--nova-success); }
+.stat-label { font-size: 0.82rem; color: var(--nova-muted); }
+.stat-value { font-family: var(--nova-font-heading); font-size: 1.65rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
+.stat-hint { font-size: 0.78rem; color: var(--nova-muted); }
+
+/* ---------- Tables ---------- */
+.admin-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.admin-table th { padding: 0.8rem 1.1rem; text-align: left; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nova-muted); background: var(--nova-surface-alt); white-space: nowrap; }
+.admin-table td { padding: 0.9rem 1.1rem; border-top: 1px solid var(--nova-border); vertical-align: middle; }
+.admin-table tbody tr:hover { background: #fcfcfa; }
+.admin-table .text-end { text-align: right; }
+.cell-product { display: flex; align-items: center; gap: 0.8rem; min-width: 220px; }
+.cell-product img { width: 44px; height: 44px; object-fit: cover; border-radius: 8px; background: var(--nova-surface-alt); flex: none; }
+.row-actions { display: inline-flex; gap: 0.4rem; }
+.stock-editor { display: flex; align-items: center; gap: 0.5rem; min-width: 150px; }
+.stock-editor .form-control { width: 84px; padding: 0.35rem 0.6rem; }
+.status-select { min-width: 140px; }
+
+/* ---------- Product form ---------- */
+.spec-editor { display: grid; gap: 0.6rem; }
+.spec-row { display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 0.6rem; }
+@media (max-width: 575.98px) { .spec-row { grid-template-columns: 1fr auto; } .spec-row input:nth-child(2) { grid-column: 1; } }
+.image-drop { aspect-ratio: 1 / 1; border: 2px dashed var(--nova-border-strong); border-radius: var(--nova-radius-lg); overflow: hidden; display: grid; place-items: center; background: var(--nova-surface-alt); }
+.image-drop img { width: 100%; height: 100%; object-fit: cover; }
+.image-drop-empty { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--nova-muted); }
+.btn-danger { --bs-btn-bg: var(--nova-danger); --bs-btn-border-color: var(--nova-danger); --bs-btn-hover-bg: #8f1c12; --bs-btn-hover-border-color: #8f1c12; --bs-btn-disabled-bg: var(--nova-danger); --bs-btn-disabled-border-color: var(--nova-danger); }
+
+/* ---------- Confirm dialog ---------- */
+.dialog-backdrop { position: fixed; inset: 0; z-index: 2100; display: grid; place-items: center; padding: 1rem; background: rgba(17, 17, 17, 0.45); }
+.dialog { width: min(100%, 440px); padding: 1.5rem; background: var(--nova-surface); border-radius: var(--nova-radius-lg); box-shadow: var(--nova-shadow-lg); animation: nova-toast-in 160ms ease; }

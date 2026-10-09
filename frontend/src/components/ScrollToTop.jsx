@@ -1,12 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
-// React Router changes the page without a reload, so the scroll position would
-// stay where it was. This jumps back to the top on every navigation.
-export default function ScrollToTop() {
+export default function ScrollToTop({ focusTargetId = 'main' }) {
   const { pathname } = useLocation();
+  const previousPath = useRef(pathname);
+
   useEffect(() => {
+    // Skip the very first render (and React StrictMode's repeat of it)
+    if (previousPath.current === pathname) return;
+    previousPath.current = pathname;
+
     window.scrollTo(0, 0);
-  }, [pathname]);
+    // The target has tabIndex={-1}, which allows focus from code without adding it to the Tab order
+    document.getElementById(focusTargetId)?.focus({ preventScroll: true });
+  }, [pathname, focusTargetId]);
+
   return null;
 }

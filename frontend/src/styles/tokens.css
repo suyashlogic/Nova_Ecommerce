@@ -1,40 +1,51 @@
 /* ==========================================================
    NOVA design tokens: the single source of truth for the look.
+   Palette sampled from the TechNest reference template:
+   deep navy + vivid blue on cool, near-white surfaces.
    Change a value here and the whole app follows.
    ========================================================== */
 :root {
-  /* Colour */
-  --nova-bg: #fafaf8;
+  /* Brand */
+  --nova-navy: #0a1328;            /* hero, footer, dark surfaces (template: #0A1328) */
+  --nova-accent: #1c54d0;          /* primary buttons and links (template: #1C54D0) */
+  --nova-accent-hover: #1544ac;
+  --nova-accent-soft: #e8eefc;
+
+  /* Surfaces and lines (cool grey-blue, like the template's backdrop) */
+  --nova-bg: #f6f7fb;
   --nova-surface: #ffffff;
-  --nova-surface-alt: #f3f2ee;
-  --nova-ink: #111111;
-  --nova-ink-soft: #3d3d3a;
-  --nova-muted: #6b6b66;
-  --nova-border: #e6e4dd;
-  --nova-border-strong: #cfccc2;
+  --nova-surface-alt: #f2f4f8;     /* category cards, banners (template: #F3F4F8) */
+  --nova-border: #e3e6ed;          /* template backdrop colour */
+  --nova-border-strong: #c9cfda;
 
-  --nova-accent: #4f46e5;
-  --nova-accent-hover: #4338ca;
-  --nova-accent-soft: #eeedfd;
+  /* Text */
+  --nova-ink: #0a1328;
+  --nova-ink-soft: #2b3550;
+  --nova-muted: #5b6578;
 
-  --nova-success: #1a7f4b;
-  --nova-success-soft: #e5f4ec;
-  --nova-warning: #9a6200;
+  /* Status colours. Hues match the template; values are darkened just enough
+     that white or tinted text passes WCAG AA (4.5:1). */
+  --nova-success: #1a7340;
+  --nova-success-soft: #e4f4ea;
+  --nova-warning: #8a5a00;
   --nova-warning-soft: #fdf3dc;
-  --nova-danger: #b42318;
+  --nova-danger: #c62f25;
   --nova-danger-soft: #fdeceb;
+  --nova-sale: #d6372c;            /* discount badges (template red #E44438, darkened for AA) */
+  --nova-star: #f0b428;            /* ratings (template gold) */
+  --nova-star-empty: #d6dae3;
 
   /* Typography */
   --nova-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --nova-font-heading: 'Space Grotesk', 'Inter', system-ui, sans-serif;
 
-  /* Radius, shadow, spacing, motion */
+  /* Radius, shadow (navy-tinted), spacing, motion */
   --nova-radius-sm: 8px;
   --nova-radius-md: 12px;
   --nova-radius-lg: 20px;
-  --nova-shadow-sm: 0 1px 2px rgba(17, 17, 17, 0.06);
-  --nova-shadow-md: 0 8px 24px rgba(17, 17, 17, 0.08);
-  --nova-shadow-lg: 0 18px 48px rgba(17, 17, 17, 0.12);
+  --nova-shadow-sm: 0 1px 2px rgba(10, 19, 40, 0.06);
+  --nova-shadow-md: 0 8px 24px rgba(10, 19, 40, 0.08);
+  --nova-shadow-lg: 0 18px 48px rgba(10, 19, 40, 0.16);
   --nova-ease: 160ms ease;
   --nova-header-height: 68px;
 

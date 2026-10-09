@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Icon from './Icon';
 import Rating from './Rating';
 import Price from './Price';
 import StockStatus from './StockStatus';
@@ -6,10 +8,23 @@ import WishlistButton from './WishlistButton';
 import useCart from '../hooks/useCart';
 import imageUrl from '../utils/imageUrl';
 
-// One product tile. Used on Home, Shop and "Related products" so it exists only once.
+// One product tile. Used on Home, Shop, Wishlist and "Related products" so it exists only once.
 export default function ProductCard({ product }) {
   const { addItem } = useCart();
   const detailsPath = `/products/${product.id}`;
+
+  // Brief "Added" confirmation on the button itself, so feedback appears where the eyes already are
+  const [justAdded, setJustAdded] = useState(false);
+  const timer = useRef(null);
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  async function handleAdd() {
+    const added = await addItem(product, 1);
+    if (!added) return;
+    setJustAdded(true);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setJustAdded(false), 1600);
+  }
 
   return (
     <article className="product-card">
@@ -33,12 +48,19 @@ export default function ProductCard({ product }) {
         <div className="product-card-actions">
           <button
             type="button"
-            className="btn btn-nova-dark btn-sm flex-grow-1"
-            onClick={() => addItem(product, 1)}
+            className={`btn btn-sm flex-grow-1 ${justAdded ? 'btn-added' : 'btn-nova-dark'}`}
+            onClick={handleAdd}
             disabled={!product.inStock}
+            aria-label={`Add ${product.name} to cart`}
           >
-            <span className="d-none d-sm-inline">Add to cart</span>
-            <span className="d-sm-none">Add</span>
+            {justAdded ? (
+              <><Icon name="check" size={16} className="me-1" />Added</>
+            ) : (
+              <>
+                <span className="d-none d-sm-inline">Add to cart</span>
+                <span className="d-sm-none">Add</span>
+              </>
+            )}
           </button>
           <Link to={detailsPath} className="btn btn-nova-outline btn-sm" aria-label={`View details for ${product.name}`}>
             Details

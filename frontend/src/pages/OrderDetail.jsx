@@ -8,6 +8,7 @@ import ErrorState from '../components/ErrorState';
 import Icon from '../components/Icon';
 import Skeleton from '../components/Skeleton';
 import LoadingSpinner from '../components/LoadingSpinner';
+import useAuth from '../hooks/useAuth';
 import useFetch from '../hooks/useFetch';
 import usePageTitle from '../hooks/usePageTitle';
 import useToast from '../hooks/useToast';
@@ -22,6 +23,7 @@ export default function OrderDetail() {
   const { id } = useParams();
   const location = useLocation();
   const toast = useToast();
+  const { user } = useAuth();
   const { data: order, loading, error, reload } = useFetch(() => getOrder(id), [id]);
 
   const [confirming, setConfirming] = useState(false);
@@ -142,7 +144,8 @@ export default function OrderDetail() {
         </div>
       </div>
 
-      {order.canCancel && (
+      {/* Admins may open any order, but the customer-side cancel only works for the owner. Admins change status in /admin/orders. */}
+      {order.canCancel && order.userId === user.id && (
         <div className="mt-4">
           {!confirming ? (
             <button type="button" className="btn btn-nova-outline" onClick={() => setConfirming(true)}>Cancel order</button>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CheckoutSteps from '../components/CheckoutSteps';
 import FormField from '../components/FormField';
+import useFocusFirstInvalid from '../hooks/useFocusFirstInvalid';
 import OrderTotals from '../components/OrderTotals';
 import EmptyState from '../components/EmptyState';
 import ErrorState from '../components/ErrorState';
@@ -52,6 +53,7 @@ export default function Checkout() {
     country: user.country ?? 'India',
   }));
   const [errors, setErrors] = useState({});
+  useFocusFirstInvalid(errors);
   const [paymentMethod, setPaymentMethod] = useState('card');
   const [placing, setPlacing] = useState(false);
   const [placed, setPlaced] = useState(false);

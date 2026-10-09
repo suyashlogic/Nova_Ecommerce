@@ -1,0 +1,98 @@
+/* ==========================================================
+   Template theme. Loaded LAST. Everything colour-related that was
+   hard-coded in earlier files is re-pointed at the tokens here.
+   Remove the "Hero" block below to go back to a light hero.
+   ========================================================== */
+
+/* ---------- Focus rings and form details ---------- */
+.form-control::placeholder { color: #6b7488; }
+.form-control:focus, .form-select:focus { box-shadow: 0 0 0 4px rgba(28, 84, 208, 0.16); }
+.form-control.is-invalid:focus { box-shadow: 0 0 0 4px rgba(198, 47, 37, 0.16); }
+.btn-nova-primary { --bs-btn-focus-shadow-rgb: 28, 84, 208; }
+.nova-pagination { --bs-pagination-focus-box-shadow: 0 0 0 4px rgba(28, 84, 208, 0.16); }
+.timeline li.current .timeline-dot { box-shadow: 0 0 0 5px rgba(28, 84, 208, 0.16); }
+
+/* ---------- Buttons ---------- */
+.btn-nova-dark {
+  --bs-btn-bg: var(--nova-navy); --bs-btn-border-color: var(--nova-navy);
+  --bs-btn-hover-bg: #1b2744; --bs-btn-hover-border-color: #1b2744;
+  --bs-btn-active-bg: #1b2744; --bs-btn-active-border-color: #1b2744;
+  --bs-btn-disabled-bg: var(--nova-navy); --bs-btn-disabled-border-color: var(--nova-navy);
+  --bs-btn-focus-shadow-rgb: 10, 19, 40;
+}
+.btn-danger { --bs-btn-hover-bg: #a32119; --bs-btn-hover-border-color: #a32119; }
+
+/* ---------- Header, alerts, skeletons ---------- */
+.nova-header { background: rgba(255, 255, 255, 0.92); }
+.alert-danger { border-color: #f4c7c3; }
+.alert-success { border-color: #bfe3cc; }
+.alert-warning { border-color: #f0dba5; }
+.skeleton { background: linear-gradient(90deg, #e8ecf3 25%, #f4f6fa 37%, #e8ecf3 63%); background-size: 400% 100%; }
+
+/* ---------- Footer (deep navy, like the template) ---------- */
+.nova-footer { background: var(--nova-navy); color: #b7bfcf; }
+.nova-footer a { color: #b7bfcf; }
+.nova-footer a:hover { color: #fff; }
+.nova-footer-bottom { border-top-color: #1e2a47; color: #8d97ae; }
+.nova-footer :focus-visible { outline-color: #fff; }
+.nova-footer .nova-logo-dot { background: #2b68f2; }  /* brighter dot so it shows on navy */
+
+/* ---------- Toasts ---------- */
+.nova-toast { background: var(--nova-navy); }
+.nova-toast.info .toast-icon { color: #9db8ff; }
+.nova-toast-close { color: #9aa4ba; }
+
+/* ---------- Ratings and discount badges ---------- */
+.stars { color: var(--nova-star-empty); }
+.stars-fill { color: var(--nova-star); }
+.badge-nova.product-card-badge { background: var(--nova-sale); color: #fff; }
+
+/* ---------- Category cards: calm neutral surface with a soft tint (template style) ---------- */
+.category-card { background: var(--nova-surface-alt); color: var(--nova-ink); border-color: var(--nova-border); }
+.category-card::after { background: hsl(var(--hue), 60%, 91%); }
+.category-card:hover { color: var(--nova-ink); }
+.category-card-arrow { background: var(--nova-ink); transition: background var(--nova-ease); }
+.category-card:hover .category-card-arrow { background: var(--nova-accent); }
+
+/* ---------- Admin ---------- */
+.admin-table tbody tr:hover { background: #f8f9fc; }
+.dialog-backdrop { background: rgba(10, 19, 40, 0.5); }
+.qty-btn:disabled { color: #98a0b3; }
+
+/* ==========================================================
+   Hero: deep navy panel with white type (the template's signature block)
+   ========================================================== */
+.hero { padding-block: clamp(1rem, 2.5vw, 1.75rem) 0; }
+.hero-panel {
+  position: relative; overflow: hidden;
+  background: var(--nova-navy); color: #fff;
+  border-radius: 28px; padding: clamp(1.75rem, 5vw, 3.75rem);
+  box-shadow: var(--nova-shadow-md);
+}
+/* One soft blue glow behind the product mosaic, like the lit podium in the template */
+.hero-panel::before {
+  content: ''; position: absolute; right: -12%; top: -25%; width: 62%; aspect-ratio: 1;
+  background: radial-gradient(closest-side, rgba(43, 104, 242, 0.35), transparent);
+  pointer-events: none;
+}
+.hero-panel > * { position: relative; }
+@media (max-width: 575.98px) { .hero-panel { border-radius: 20px; } }
+
+.hero h1 { color: #fff; }
+.hero .eyebrow { color: #8fb0ff; }
+.hero-lead { color: #b7c2db; }
+.hero :focus-visible { outline-color: #fff; }
+
+/* Slightly brighter blue on navy so the button edge clears 3:1 and its label 4.5:1 */
+.hero .btn-nova-primary {
+  --bs-btn-bg: #2b68f2; --bs-btn-border-color: #2b68f2;
+  --bs-btn-hover-bg: #1f57d6; --bs-btn-hover-border-color: #1f57d6;
+  --bs-btn-active-bg: #1f57d6; --bs-btn-active-border-color: #1f57d6;
+  --bs-btn-disabled-bg: #2b68f2; --bs-btn-disabled-border-color: #2b68f2;
+}
+.hero .btn-nova-outline {
+  --bs-btn-color: #fff; --bs-btn-border-color: rgba(255, 255, 255, 0.55);
+  --bs-btn-hover-color: #fff; --bs-btn-hover-bg: rgba(255, 255, 255, 0.1); --bs-btn-hover-border-color: #fff;
+  --bs-btn-active-color: #fff; --bs-btn-active-bg: rgba(255, 255, 255, 0.16); --bs-btn-active-border-color: #fff;
+}
+.hero .hero-tile { background: #17213d; border-color: rgba(255, 255, 255, 0.14); }

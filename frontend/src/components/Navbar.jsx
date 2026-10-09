@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from './Logo';
 import Icon from './Icon';
@@ -15,6 +15,14 @@ export default function Navbar() {
   const { itemCount } = useCart();
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeMobile = () => setMobileOpen(false);
+
+  // Escape closes the mobile menu
+  useEffect(() => {
+    if (!mobileOpen) return undefined;
+    const handleKey = (event) => event.key === 'Escape' && setMobileOpen(false);
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, [mobileOpen]);
 
   const links = (
     <>
@@ -41,7 +49,7 @@ export default function Navbar() {
             aria-label={itemCount > 0 ? `Shopping cart, ${itemCount} items` : 'Shopping cart'}
           >
             <Icon name="cart" size={22} />
-            {itemCount > 0 && <span className="nova-badge-count" aria-hidden="true">{itemCount > 99 ? '99+' : itemCount}</span>}
+            {itemCount > 0 && <span key={itemCount} className="nova-badge-count" aria-hidden="true">{itemCount > 99 ? '99+' : itemCount}</span>}
           </Link>
 
           {/* Avoid flashing "Sign in" while we are still asking the server who the user is */}
